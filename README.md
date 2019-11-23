@@ -1,0 +1,2 @@
+# cogtest
+A simple test
