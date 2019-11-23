@@ -1,5 +1,6 @@
 $(function () {
 
+    // Initialize the variables
     var testResults = [];
     var round = 0;
     var startTime, endTime;
@@ -9,14 +10,15 @@ $(function () {
     var maxRound = 20;
     var images = [];
 
+    // Hide the areas
+    $("#colors").hide();
+    $("#results").hide();
+
+    // Initialize the images
     for (var i = 1; i <= 6; i++) {
         images.push("images/cat" + i.toString() + ".png");
         images.push("images/dog" + i.toString() + ".png");
     }
-    //console.info(images);
-
-    $("#colors").hide();
-    $("#results").hide();
 
     $("#btnStart").click(function () {
         //alert('hello world!');
@@ -38,7 +40,6 @@ $(function () {
                 elapsedTime: elapsed,
                 answer: (gameType === 1 && !even) || (gameType === 2 && !odd) || (gameType === 3 && !low) || (gameType === 4 && !high)
             }
-            console.info(gameResult);
             testResults.push(gameResult);
             $("#txtInput").val("");
             startTest();
@@ -53,12 +54,10 @@ $(function () {
                 elapsedTime: elapsed,
                 answer: (gameType === 1 && even) || (gameType === 2 && odd) || (gameType === 3 && low) || (gameType === 4 && high)
             }
-            console.info(gameResult);
             testResults.push(gameResult);
             $("#txtInput").val("");
             startTest();
         }
-        //console.info(event);
         if (round >= maxRound) {
             gameEnd();
             $("#colors").hide();
