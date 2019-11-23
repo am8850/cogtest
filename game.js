@@ -6,7 +6,7 @@ $(function () {
     var gameType = 0;
     var answer = false;
     var even, odd, high, low = false;
-    var maxRound = 2;
+    var maxRound = 20;
     var images = [];
 
     for (var i = 1; i <= 6; i++) {
