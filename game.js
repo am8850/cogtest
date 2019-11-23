@@ -72,7 +72,7 @@ $(function () {
         var totalTime = 0;
         var correctAnswers = 0;
         var IncorrectAnswers = 0;
-        html += "<tr><th>Type</th><th>Answer</th><th>Time (s)</th>";
+        html += "<tr><th>Type</th><th>Answer</th><th>Time (s)</th></tr>";
         for (var i = 0, len = testResults.length; i < len; i++) {
             var item = testResults[i];
             var gLabel = "";
@@ -99,23 +99,13 @@ $(function () {
             correctAnswers += item.answer ? 1:0;
             IncorrectAnswers += !item.answer ? 1:0;
         }
-        // <tr>
-        //   <td>Jill</td>
-        //   <td>Smith</td>
-        //   <td>50</td>
-        // </tr>
-        // <tr>
-        //   <td>Eve</td>
-        //   <td>Jackson</td>
-        //   <td>94</td>
-        // </tr>
-        html += "<tr><td col='4'>";
+        html += "<tr><td colspan='3'>";
         html += "<strong>Summary:</strong>";
         html += "<br/>Total Time: " + totalTime.toString() +" (s)"
         html += "<br/>Total Questions: " + maxRound;
         html += "<br/>Correct Answers: " + correctAnswers.toString();
         html += "<br>Incorrect Answers: " + IncorrectAnswers.toString();
-        html += "<td></tr>";
+        html += "</td></tr>";
         html += "</table>";
         $("#resTable").html(html);
     }
