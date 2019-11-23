@@ -1,2 +1,3 @@
-# cogtest
-A simple test
+# Cats and Dogs
+
+A simple simple cognitve test.
