@@ -15,9 +15,12 @@ $(function () {
     $("#results").hide();
 
     // Initialize the images
+    var c=0;
     for (var i = 1; i <= 6; i++) {
         images.push("images/cat" + i.toString() + ".png");
+        $("#c0").attr("src", images[c++]);
         images.push("images/dog" + i.toString() + ".png");
+        $("#c1").attr("src", images[c++]);
     }
 
     $("#btnStart").click(function () {
