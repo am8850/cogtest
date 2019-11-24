@@ -9,6 +9,7 @@ $(function () {
     var even, odd, high, low = false;
     var maxRound = 20;
     var images = [];
+    var canPlay = false;
 
     // Hide the areas
     $("#colors").hide();
@@ -29,12 +30,15 @@ $(function () {
         $("#colors").show();
         $("#txtInput").val("");
         round = 0;
-        startTest();
+        canPlay = true;
         $("#txtInput").focus();
+        startTest();
     })
 
     $("#txtInput").keyup(function (event) {
         // No
+        if (!canPlay)
+            return;
         if (event.key === "1" || event.key === "End") {
             elapsed = end();
             round++;
@@ -69,6 +73,8 @@ $(function () {
     })
 
     function gameEnd() {
+        // Signal that it can no loger play
+        canPlay = false;
         // Build a report
         var html = "<table class='table table-striped'>";
         var totalTime = 0;
