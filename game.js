@@ -201,7 +201,7 @@ $(function () {
         timeDiff /= 1000;
 
         // get seconds 
-        return Math.round(timeDiff);
-
+        //return Math.round(timeDiff);
+        return timeDiff.toFixed(2);
     }
 })
