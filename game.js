@@ -109,7 +109,7 @@ $(function () {
         }
         html += "<tr><td colspan='3'>";
         html += "<strong>Summary:</strong>";
-        html += "<br/>Total Time: " + totalTime.toString() +" (s)"
+        html += "<br/>Total Time: " + totalTime.toFixed(1) +" (s)"
         html += "<br/>Total Questions: " + maxRound;
         html += "<br/>Correct Answers: " + correctAnswers.toString();
         html += "<br>Incorrect Answers: " + IncorrectAnswers.toString();
