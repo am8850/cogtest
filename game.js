@@ -202,6 +202,6 @@ $(function () {
 
         // get seconds 
         //return Math.round(timeDiff);
-        return timeDiff.toFixed(2);
+        return timeDiff.toFixed(1);
     }
 })
