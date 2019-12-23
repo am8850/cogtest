@@ -10,6 +10,8 @@ $(function () {
     var maxRound = 20;
     var images = [];
     var canPlay = false;
+    var cols = 6;
+    var initials = "";
 
     // Hide the areas
     $("#colors").hide();
@@ -26,10 +28,17 @@ $(function () {
 
     $("#btnStart").click(function () {
         //alert('hello world!');
-        $("#btnStart").hide();
+        $("#startdiv").hide();
         $("#colors").show();
         $("#txtInput").val("");
-        round = 0;
+        initials = $("#initials").val();
+        var tries = $("#tries").val();
+        //alert(initials + " " + tries);
+        //alert('hello');
+        if (tries && parseInt(tries)) {
+            maxRound = tries;
+        }
+        round = 0;        
         canPlay = true;
         $("#txtInput").focus();
         startTest();
@@ -76,7 +85,8 @@ $(function () {
         // Signal that it can no loger play
         canPlay = false;
         // Build a report
-        var html = "<table class='table table-striped'>";
+        $("#rinitials").html(initials);
+        var html = "<table id='tbresults' class='table table-striped'>";
         var totalTime = 0;
         var correctAnswers = 0;
         var IncorrectAnswers = 0;
@@ -134,11 +144,11 @@ $(function () {
                 break;
             case 3:
                 question = "Low ?";
-                low = pics <= 4;
+                low = pics <= parseInt(cols/2);
                 break;
             case 4:
                 question = "High ?";
-                high = pics > 4;
+                high = pics > parseInt(cols/2);
                 break;
         }
 
@@ -147,7 +157,9 @@ $(function () {
     }
 
     function refreshCels(num) {
-        for (var i = 0; i < 8; i++) {
+
+        // Reset the image
+        for (var i = 0; i < cols; i++) {
             $("#c" + i.toString()).attr("src", "");
         }
 
@@ -205,3 +217,43 @@ $(function () {
         return parseFloat(timeDiff.toFixed(1));
     }
 })
+
+function exportTableToExcel(tableID, filename = ''){
+    var downloadLink;
+    var dataType = 'application/vnd.ms-excel';
+    var tableSelect = document.getElementById(tableID);
+    var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+    
+    // Specify file name
+    filename = filename?filename+'.xls':'excel_data.xls';
+    
+    // Create download link element
+    downloadLink = document.createElement("a");
+    
+    document.body.appendChild(downloadLink);
+    
+    if(navigator.msSaveOrOpenBlob){
+        var blob = new Blob(['\ufeff', tableHTML], {
+            type: dataType
+        });
+        navigator.msSaveOrOpenBlob( blob, filename);
+    }else{
+        // Create a link to the file
+        downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+    
+        // Setting the file name
+        downloadLink.download = filename;
+        
+        //triggering the function
+        downloadLink.click();
+    }
+}
+
+function exportF(elem) {
+    var table = document.getElementById("tbresults");
+    var html = table.outerHTML;
+    var url = 'data:application/vnd.ms-excel,' + escape(html); // Set your html table into url 
+    elem.setAttribute("href", url);
+    elem.setAttribute("download", "export.xls"); // Choose the file name
+    return false;
+  }
