@@ -15,7 +15,19 @@
     <div class="container">
         <h1>Cats & Dogs</h1>
 
-        <button id="btnStart" class="btn btn-default">Start</button>
+        <div id="startdiv">
+            <table>
+                <tr>
+                    <td>Initials</td>
+                    <td><input id="initials" name="initials" type="text" values="" /></td>
+                </tr>
+                <tr>
+                    <td>Questions</td>
+                    <td><input id="tries" name="tries" type="text" value="20" /></td>
+                </tr>
+            </table>
+            <button id="btnStart" class="btn btn-default">Start</button>
+        </div>
 
         <div id="colors">
             <h2 class="text-center" id="question">Even?</h2>
@@ -25,38 +37,35 @@
             </div>
             <div style="height: 20px;"></div>
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <img id="c0" src="" alt="" class="img-fluid">
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <img id="c1" src="" alt="" class="img-fluid">
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <img id="c2" src="" alt="" class="img-fluid">
-                </div>
-                <div class="col-md-3">
-                    <img id="c3" src="" alt="" class="img-fluid">
                 </div>
             </div>
             <div style="height: 20px;"></div>
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-4">
+                    <img id="c3" src="" alt="" class="img-fluid">
+                </div>
+                <div class="col-md-4">
                     <img id="c4" src="" alt="" class="img-fluid">
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <img id="c5" src="" alt="" class="img-fluid">
-                </div>
-                <div class="col-md-3">
-                    <img id="c6" src="" alt="" class="img-fluid">
-                </div>
-                <div class="col-md-3">
-                    <img id="c7" src="" alt="" class="img-fluid">
                 </div>
             </div>
         </div>
 
         <div id="results">
-            <h2>Results</h2>
+            <h2>Results for: <span id="rinitials"></span></h2>
+            <!-- <p><button class="btn btn-default" onclick="exportTableToExcel('tbresults')">Export Table Data To Excel
+                    File</button></p> 
+            <a id="downloadLink" onclick="exportF(this)">Export to excel</a>-->
             <div id="resTable">
 
             </div>
